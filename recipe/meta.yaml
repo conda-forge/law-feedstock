@@ -1,17 +1,17 @@
 {% set name = "law" %}
-{% set version = "0.0.41" %}
+{% set version = "0.1.1" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 3b6e457bb99da69ddab03e91a80057958ee9477dba7bb6f8823059b2cbce19b3
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: cd7c37902342ccea20ec1b288bf5a06a8405591c0e773de78c8c988d8f740236
 
 build:
-  number: 1
-  script: "{{ PYTHON }} -m pip install . -vv"
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
 
 requirements:
@@ -64,14 +64,14 @@ test:
     - law.task
     - law.workflow
   commands:
-     - law --help
+    - law --help
 
 about:
   home: https://github.com/riga/law
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: "Use law to build complex and large-scale task workflows."
+  summary: Use law to build complex and large-scale task workflows.
   description: |
     Use law to build complex and large-scale task workflows. It is build on top of luigi and adds
     abstractions for run locations, storage locations and software environments. Law strictly
