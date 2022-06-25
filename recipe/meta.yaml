@@ -1,5 +1,5 @@
 {% set name = "law" %}
-{% set version = "0.1.5" %}
+{% set version = "0.1.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,69 +7,33 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 3fd073107a53c76432f685aa6e256a99e33e72e2c0113377c018b882dd3ae2e9
+  sha256: 1907989263087baaae652f00b8f196ed31df57cf749d2583d90c6e6af18fb2c3
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
-  skip: true  # [win]
+  noarch: python
 
 requirements:
   host:
     - python
     - pip
-    - six >=1.10
-    - luigi >=2.8.2,<3  # [py<=27]
-    - luigi >=2.8.2  # [py>30]
   run:
-    - python
+    - python >=3.6
     - six >=1.10
-    - luigi >=2.8.2,<3  # [py<=27]
-    - luigi >=2.8.2  # [py>30]
+    - luigi >=2.8.2
 
 test:
-  requires:
-    - ipython
   imports:
     - law
-    - law.cli
-    - law.contrib
-    - law.contrib.arc
-    - law.contrib.cms
-    - law.contrib.coffea
-    - law.contrib.docker
-    - law.contrib.dropbox
-    - law.contrib.git
-    - law.contrib.glite
-    - law.contrib.hdf5
-    - law.contrib.htcondor
-    - law.contrib.ipython
-    - law.contrib.keras
-    - law.contrib.lsf
-    - law.contrib.matplotlib
-    - law.contrib.mercurial
-    - law.contrib.numpy
-    - law.contrib.profiling
-    - law.contrib.rich
-    - law.contrib.root
-    - law.contrib.singularity
-    - law.contrib.slack
-    - law.contrib.tasks
-    - law.contrib.telegram
-    - law.contrib.tensorflow
-    - law.contrib.wlcg
-    - law.job
-    - law.sandbox
-    - law.target
-    - law.task
-    - law.workflow
   commands:
-    - law --help
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/riga/law
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE
   summary: Use law to build complex and large-scale task workflows.
   description: |
