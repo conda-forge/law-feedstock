@@ -1,11 +1,11 @@
-About law
-=========
+About law-feedstock
+===================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/law-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/riga/law
 
 Package license: BSD-3-Clause
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/law-feedstock/blob/main/LICENSE.txt)
 
 Summary: Use law to build complex and large-scale task workflows.
 
