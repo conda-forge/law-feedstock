@@ -1,5 +1,5 @@
 {% set name = "law" %}
-{% set version = "0.1.17" %}
+{% set version = "0.1.18" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 8d00867444c1771300d1954d4110fd3529db14792c4ba70daabea124ecceadbf
+  sha256: b9b655c8b91ea0c56e9a8aa7243bd03b135f17b9ef700ee0c1de591729f3fd05
 
 build:
   number: 0
