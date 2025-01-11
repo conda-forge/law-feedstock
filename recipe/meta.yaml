@@ -10,16 +10,16 @@ source:
   sha256: cfb3e808c352271f268dd970bb54f67b02fec2a1ce9ca2ca7111a03a6f39067b
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   noarch: python
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - six >=1.10
     - luigi >=2.8.2
 
@@ -30,6 +30,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/riga/law
