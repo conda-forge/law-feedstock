@@ -11,7 +11,7 @@ Summary: Use law to build complex and large-scale task workflows.
 
 Development: https://github.com/riga/law
 
-Documentation: https://law.readthedocs.io
+Documentation: https://law.readthedocs.io/
 
 Use law to build complex and large-scale task workflows. It is build on top of luigi and adds
 abstractions for run locations, storage locations and software environments. Law strictly
@@ -21,10 +21,9 @@ resource-opportunistic.
 Key features:
 - CLI with auto-completion and interactive status and dependency inspection.
 - Remote targets with automatic retries and local caching: WebDAV, HTTP, Dropbox, SFTP, all WLCG
-  protocols (srm, xrootd, rfio, dcap, gsiftp, ...)
+protocols (srm, xrootd, rfio, dcap, gsiftp, ...)
 - Automatic submission to batch systems from within tasks: HTCondor, LSF, gLite, ARC
 - Environment sandboxing, configurable on task level: Docker, Singularity, Sub-Shells
-
 
 Current build status
 ====================
