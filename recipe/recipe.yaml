@@ -1,39 +1,44 @@
-{% set name = "law" %}
-{% set version = "0.1.20" %}
+schema_version: 1
+
+context:
+  name: law
+  version: 0.1.20
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
   sha256: cfb3e808c352271f268dd970bb54f67b02fec2a1ce9ca2ca7111a03a6f39067b
 
 build:
-  number: 1
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 2
   noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - pip
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - six >=1.10
     - luigi >=2.8.2
 
-test:
-  imports:
-    - law
-  commands:
-    - pip check
-  requires:
-    - pip
-    - python {{ python_min }}
+tests:
+  - python:
+      imports:
+        - law
+      python_version: ${{ python_min }}.*
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}.*
+    script:
+      - pip check
 
 about:
-  home: https://github.com/riga/law
   license: BSD-3-Clause
   license_file: LICENSE
   summary: Use law to build complex and large-scale task workflows.
@@ -46,11 +51,12 @@ about:
     Key features:
     - CLI with auto-completion and interactive status and dependency inspection.
     - Remote targets with automatic retries and local caching: WebDAV, HTTP, Dropbox, SFTP, all WLCG
-      protocols (srm, xrootd, rfio, dcap, gsiftp, ...)
+    protocols (srm, xrootd, rfio, dcap, gsiftp, ...)
     - Automatic submission to batch systems from within tasks: HTCondor, LSF, gLite, ARC
     - Environment sandboxing, configurable on task level: Docker, Singularity, Sub-Shells
-  doc_url: https://law.readthedocs.io
-  dev_url: https://github.com/riga/law
+  homepage: https://github.com/riga/law
+  repository: https://github.com/riga/law
+  documentation: https://law.readthedocs.io
 
 extra:
   recipe-maintainers:
