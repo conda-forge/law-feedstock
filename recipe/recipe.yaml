@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: law
-  version: 0.1.20
+  version: "0.1.21"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: cfb3e808c352271f268dd970bb54f67b02fec2a1ce9ca2ca7111a03a6f39067b
+  sha256: 4a81b2c7469d8ee08f1258e99fa5a065543de028dbb017f9b72cc3905f8c2dc9
 
 build:
-  number: 2
+  number: 0
   noarch: python
   script: ${{ PYTHON }} -m pip install . -vv
 
