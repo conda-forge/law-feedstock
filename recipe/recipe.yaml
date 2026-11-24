@@ -21,16 +21,20 @@ requirements:
   host:
     - python ${{ python_min }}.*
     - pip
+    - hatchling >=1.27
   run:
     - python >=${{ python_min }}
     - six >=1.10
-    - luigi >=2.8.2
+  - luigi >=3.6,<4
+  - typing_extensions >=4.15,<5
 
 tests:
   - python:
       imports:
         - law
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - requirements:
       run:
         - pip
