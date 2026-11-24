@@ -15,7 +15,7 @@ source:
 build:
   number: 0
   noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -25,8 +25,8 @@ requirements:
   run:
     - python >=${{ python_min }}
     - six >=1.10
-  - luigi >=3.6,<4
-  - typing_extensions >=4.15,<5
+    - luigi >=3.6,<4
+    - typing_extensions >=4.15,<5
 
 tests:
   - python:
