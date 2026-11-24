@@ -24,7 +24,6 @@ requirements:
     - hatchling >=1.27
   run:
     - python >=${{ python_min }}
-    - six >=1.10
     - luigi >=3.6,<4
     - typing_extensions >=4.15,<5
 
