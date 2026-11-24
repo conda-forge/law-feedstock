@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: law
-  version: "0.1.21"
+  version: "0.2.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,27 +10,30 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
-  sha256: 4a81b2c7469d8ee08f1258e99fa5a065543de028dbb017f9b72cc3905f8c2dc9
+  sha256: fd09eed70cb324db2e170ade8578b18969b7684712b86b7798152a641aa8ff67
 
 build:
   number: 0
   noarch: python
-  script: ${{ PYTHON }} -m pip install . -vv
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python ${{ python_min }}.*
     - pip
+    - hatchling >=1.27
   run:
     - python >=${{ python_min }}
-    - six >=1.10
-    - luigi >=2.8.2
+    - luigi >=3.6,<4
+    - typing_extensions >=4.15,<5
 
 tests:
   - python:
       imports:
         - law
-      python_version: ${{ python_min }}.*
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
   - requirements:
       run:
         - pip
